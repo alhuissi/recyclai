@@ -103,11 +103,12 @@ const Recyclai = (): JSX.Element => {
       context,
       [inputColumn.label]
     );
+    console.log("itemColumnValuesFromMonday: ", itemColumnValuesFromMonday)
     var input = "Turn this phrase into a funny and engageable tweet: ";
     if (itemColumnValuesFromMonday.is_success) {
       const { items } = itemColumnValuesFromMonday.data.boards[0].groups[0];
       var prompts: string[] = items.map((item: any) => {
-        return input + item.column_values[0].text;
+        return input + item.column_values.find((x: any) => x.id === 'long_text').text;
       });
       var itemIdsList: { id: string }[] =
         itemColumnValuesFromMonday?.data.boards[0].groups[0].items.map(
@@ -118,6 +119,8 @@ const Recyclai = (): JSX.Element => {
       setMode(Modes.request);
       return null;
     }
+    console.log("prompts: ", prompts)
+    console.log("itemIdsList: ", itemIdsList)
     const aiApiResponse = await aiApiStatus.fetchData({
       prompts: prompts, // or promptsWithColumnValues,
       items: itemIdsList,
