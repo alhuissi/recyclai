@@ -1,7 +1,7 @@
 
 # Recyclai
 
-This is the repository for the Monday.com and Lablab hackaton (June 2023). The project is based on [monday's ai template](https://github.com/yuhgto/monday-ai-prompt-template).
+This is the repository for the Monday.com and Lablab hackaton (June 2023).
 
 
 ## Getting Started
